@@ -7,6 +7,14 @@ pipeline {
     }
     
     stages {
+        stage('Init') {
+            steps {
+                echo 'Initializing..'
+                sh 'pwd'      // /var/lib/jenkins/
+                sh 'id'       // uid=
+                sh 'uname -a' // Linux 
+            }
+        }    
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -33,7 +41,8 @@ pipeline {
     }
     post {
       always {
-        cleanWs()
+        echo 'I have finished running this job'
+        deleteDir() /* clean up our workspace */
         }
     }
 }
