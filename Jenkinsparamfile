@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
+    }
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                echo "${params.Greeting} World!"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                script{
+                    if (env.run_test_only =='yes') {
+                        echo 'Running the Test..'
+                    } else {
+                        echo 'Sorry, I am not running the Test..'
+                    }
+                  }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
