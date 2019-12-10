@@ -21,6 +21,20 @@ pipeline {
                 echo "${params.Greeting} World!"
             }
         }
+        stage('Shell script') {
+            steps {
+                echo 'Running shell script..'
+                sh '''#!/usr/bin/env bash
+                    set -o errexit
+                    set -o nounset
+                    set -o pipefail
+                    set -o xtrace
+                    hostname
+                    whoami
+                    set
+                '''
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
