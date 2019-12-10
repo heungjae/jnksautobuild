@@ -32,6 +32,7 @@ pipeline {
                     hostname
                     whoami
                     set
+                    scp root@syd-ora12-1:/home/oracle/mountdb.sh /var/tmp/back
                 '''
             }
         }
