@@ -1,6 +1,6 @@
 param(
 [string] $ActIP),
-[string] $actuser),
+[string] $ActUser),
 [string] $ActPass))
 
 
