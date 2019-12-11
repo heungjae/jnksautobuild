@@ -23,7 +23,7 @@ pipeline {
                 echo 'Running Windows batch script..'
                 bat 'set'
                 powershell '''
-                . ".\\actrun.ps1" -ActIP 10.65.5.35 -ActUser admin -ActPass $ActPass
+                . ".\\actrun.ps1" -ActIP 10.65.5.35 -ActUser admin -ActPass $env:ActPass
                 '''
             }
         }
