@@ -34,6 +34,11 @@ pipeline {
                     set
                     scp root@syd-ora12-1:/home/oracle/mountdb.sh /var/tmp/back
                 '''
+                script {
+                  timeout(time: 10, unit: 'MINUTES') {
+                  input(id: "Proceed", message: "Deploy ${params.project_name}?", ok: 'Deploy')
+                  }
+                }
             }
         }
         stage('Test') {
