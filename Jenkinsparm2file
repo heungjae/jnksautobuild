@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
+    }
+    
+    stages {
+  
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                echo "${params.Greeting} World! "
+            }
+        }
+        stage('Shell script') {
+            steps {
+                echo 'Running shell script..'
+                sh "./hello.sh ${params.Greeting}"
+                sh '''#!/usr/bin/env bash
+                    set -o errexit
+                    set -o nounset
+                    set -o pipefail
+                    set -o xtrace
+                    hostname
+                    whoami
+                    set
+                    scp root@syd-ora12-1:/home/oracle/mountdb.sh /var/tmp/back
+                '''
+            }
+        }
+    }
+    post {
+      always {
+        echo 'I have finished running this job'
+        deleteDir() /* clean up our workspace */
+        }
+    }
+}
