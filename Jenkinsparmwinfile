@@ -6,8 +6,9 @@ pipeline {
     }
 
     parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
-        choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
+        string(defaultValue: "admin", description: 'Actifio Username', name: 'ActUser')
+        password(defaultValue: "TopSecret", description: 'Actifio Password', name: 'ActPass')
+        string(defaultValue: "10.65.5.35", description: 'Actifio Appliance', name: 'ActIP')  
     }
     
     stages {
@@ -23,7 +24,7 @@ pipeline {
                 echo 'Running Windows batch script..'
                 bat 'set'
                 powershell '''
-                . ".\\actrun.ps1" -ActIP 10.65.5.35 -ActUser admin -ActPass $env:ActPass
+                . ".\\actrun.ps1" -ActIP $env:ActIP -ActUser $env:ActUser -ActPass $env:ActPass
                 '''
             }
         }
