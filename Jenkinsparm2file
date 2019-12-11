@@ -21,7 +21,7 @@ pipeline {
                 sh "./hello.sh ${params.Greeting}"
                 sh 'ssh -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 "udsinfo lsversion"'
                 
-                sh("""ssh -o StrictHostKeyChecking=no -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 7 << EOF
+                sh("""echo '7' > ssh -o StrictHostKeyChecking=no -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 << EOF
                 dday=\$1;
                 udsinfo lsversion;
                 reportimages -d \$dday; 
