@@ -1,7 +1,7 @@
 param(
-[string] $ActIP),
-[string] $ActUser),
-[string] $ActPass))
+[string] $ActIP,
+[string] $ActUser,
+[string] $ActPass)
 
 
 $env:IGNOREACTCERTS = $true
