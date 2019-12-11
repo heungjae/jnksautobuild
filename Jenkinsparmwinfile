@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo 'Running Windows batch script..'
                 bat 'set'
-                PowerShell(". '.\\actrun.ps1' 10.65.5.35 admin $Env:ActPass ") 
+                PowerShell(". '.\\actrun.ps1' 10.65.5.35 admin $ActPass ") 
             }
         }
     }
