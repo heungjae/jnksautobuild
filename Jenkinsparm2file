@@ -19,6 +19,7 @@ pipeline {
                 echo 'Running shell script..'
                 sh 'chmod 0755 ./hello.sh'
                 sh "./hello.sh ${params.Greeting}"
+                ssh -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 "udsinfo lsversion"
                 sh '''#!/usr/bin/env bash
                     set -o errexit
                     set -o nounset
