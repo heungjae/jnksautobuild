@@ -3,6 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        string(name: 'project_name', defaultValue: 'Proj1', description: 'Project Name?')
         choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
     }
     
@@ -39,6 +40,8 @@ pipeline {
                   input(id: "Proceed", message: "Deploy ${params.project_name}?", ok: 'Deploy')
                   }
                 }
+                echo "Proceed = ${Proceed} "
+                echo "Proceed = ${Proceed} "
             }
         }
         stage('Test') {
