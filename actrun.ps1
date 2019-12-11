@@ -20,12 +20,12 @@ if (! $env:ACTSESSIONID ){
 
 $verlist = udsinfo lsversion
 foreach ($verid in $verlist) {
-  write-output "comp = $verid.component, ver = $verid.version"
+  write-output "comp = $($verid.component), ver = $($verid.version)"
 }
 
 $verlist2 = udsinfo lsversion
 foreach ($verid2 in $verlist) {
-  write-output "installed = $verid2.installed, ver = $verid2.version"
+  write-output "installed = $($verid2.installed), ver = $($verid2.version)"
 }
 
 udsinfo lscluster
