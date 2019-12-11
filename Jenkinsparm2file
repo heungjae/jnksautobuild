@@ -22,9 +22,9 @@ pipeline {
                 sh 'ssh -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 "udsinfo lsversion"'
                 
                 sh("""ssh -o StrictHostKeyChecking=no -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 7 << EOF
-                day=$1
+                day=\$1
                 udsinfo lsversion;
-                reportjobs -d $day 
+                reportjobs -d \$day 
                 reportpools;
                 exit
                 EOF""") 
