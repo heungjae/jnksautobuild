@@ -19,6 +19,7 @@ if (! $env:ACTSESSIONID ){
 }
 
 udsinfo lsversion
+udsinfo lsversion
 udsinfo lscluster
 
 if (! $env:ACTSESSIONID ){
