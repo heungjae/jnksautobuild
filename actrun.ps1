@@ -19,8 +19,7 @@ if (! $env:ACTSESSIONID ){
 }
 
 udsinfo lsversion
-
-reportpools
+udsinfo lscluster
 
 if (! $env:ACTSESSIONID ){
   write-warning "Login to VDP $ActIP failed"
