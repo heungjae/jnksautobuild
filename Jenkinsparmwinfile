@@ -1,3 +1,8 @@
+def PowerShell(psCmd) {
+    psCmd=psCmd.replaceAll("%", "%%")
+    bat "powershell.exe -NonInteractive -ExecutionPolicy Bypass -Command \"\$ErrorActionPreference='Stop';[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$psCmd;EXIT \$global:LastExitCode\""
+}
+
 pipeline {
     agent any
 
@@ -18,7 +23,7 @@ pipeline {
             steps {
                 echo 'Running Windows batch script..'
                 bat 'set'
-                powershell ".\actrun.ps1 10.65.5.35 admin actifio"
+                PowerShell(". '.\\actrun.ps1' 10.65.5.35 admin actifio ") 
             }
         }
     }
