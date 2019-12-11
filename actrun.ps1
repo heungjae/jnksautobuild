@@ -19,6 +19,7 @@ if (! $env:ACTSESSIONID ){
 }
 
 udsinfo lsversion
+
 reportpools
 
 if (! $env:ACTSESSIONID ){
