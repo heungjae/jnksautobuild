@@ -7,7 +7,7 @@ pipeline {
     agent any
 
     environment {
-       PATH = "C:\\WINDOWS\\SYSTEM32"
+       PATH = "C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
     }
 
     parameters {
