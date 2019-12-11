@@ -1,3 +1,5 @@
+def approvalMap             // collect data from approval step
+
 pipeline {
     agent any
 
@@ -40,7 +42,7 @@ pipeline {
                   var = input(id: "Proceed", message: "Deploy ${params.project_name}?", ok: 'Deploy')
                   }
                 }
-                echo "Proceed = ${var} "
+                echo "Proceed = $var "
             }
         }
         stage('Test') {
@@ -56,6 +58,10 @@ pipeline {
                            echo 'Sorry, I am not running the Test..'
                         }
                     }
+                // print the details gathered from the approval
+                echo "This build was approved by: ${approvalMap['APPROVER']}"
+                echo "This build is brought to you today by the fruit: ${approvalMap['FRUIT']}"
+                echo "This is myparam: ${approvalMap['myparam']}"    
                 }
 
             }
