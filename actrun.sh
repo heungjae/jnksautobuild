@@ -11,7 +11,7 @@ fi
 
 readonly numparms=1
 
-[ $# -ne $numparms ] && { echo "Usage: $0 sky-ip (10.61.5.187) "; exit 1; 
+[ $# -ne $numparms ] && { echo "Usage: $0 sky-ip (10.61.5.187) "; exit 1;  }
 
 act_ip=$1
 
