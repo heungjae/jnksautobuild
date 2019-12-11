@@ -27,7 +27,9 @@ pipeline {
             steps {
                 echo 'Running Windows batch script..'
                 bat 'set'
-                bat 'powershell -noexit "& "".\\actrun.ps1"" 10.65.5.35 admin $ActPass "'
+                powershell '''
+                . ".\\actrun.ps1" -ActIP 10.65.5.35 -ActUser admin -ActPass $ActPass
+                '''
                 // PowerShell(". '.\\actrun.ps1' 10.65.5.35 admin $ActPass ") 
             }
         }
