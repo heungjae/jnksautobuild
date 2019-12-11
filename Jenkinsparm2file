@@ -17,6 +17,7 @@ pipeline {
         stage('Shell script') {
             steps {
                 echo 'Running shell script..'
+                sh 'chmod 0755 ./hello.sh'
                 sh "./hello.sh ${params.Greeting}"
                 sh '''#!/usr/bin/env bash
                     set -o errexit
