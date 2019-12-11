@@ -17,8 +17,9 @@ pipeline {
         stage('Shell script') {
             steps {
                 echo 'Running shell script..'
-                sh 'chmod 0755 ./hello.sh'
+                sh 'chmod 0755 ./*.sh'
                 sh "./hello.sh ${params.Greeting}"
+                sh "./actrun.sh 10.65.5.35"
                 sh 'ssh -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 "udsinfo lsversion"'
                 
                 sh("""ssh -o StrictHostKeyChecking=no -i /Users/michael/.ssh/id_rsa-sybase sybase@10.65.5.35 << EOF
