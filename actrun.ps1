@@ -18,8 +18,8 @@ if (! $env:ACTSESSIONID ){
    Connect-Act $ActIP -actuser $ActUser -passwordfile $TmpPasswdFile -ignorecerts | Out-Null
 }
 
-udsinfo lsversion
-udsinfo lsversion
+udsinfo lsversion | select component, version
+udsinfo lsversion | select installed, component, version
 udsinfo lscluster
 
 if (! $env:ACTSESSIONID ){
